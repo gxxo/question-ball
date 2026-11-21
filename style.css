@@ -1,0 +1,110 @@
+/* Question Ball styles: colors are in :root; stage typography in .stage h2 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+:root{color-scheme:dark;--bg:#0c172e;--panel:#152746;--panel2:#1c3457;--line:rgba(255,255,255,.13);--muted:#b6c5de;--ink:#f8fbff;--yellow:#ffd479;--mint:#92ebd4;--pink:#ffc2d5}
+*{box-sizing:border-box}
+body{margin:0;
+    min-height:100vh;
+    background: linear-gradient(
+        135deg,
+        #101d35 0%,
+        #253b65 50%,
+        #463b70 100%),
+    radial-gradient(ellipse at 7% 87%,#163e4d 0,transparent 35%),
+    var(--bg);color:var(--ink);font-family:'Pretendard Variable',
+    Pretendard,system-ui,sans-serif;
+    overflow-x:hidden}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.45}
+.shell{max-width:1220px;min-height:100svh;margin:auto;padding:24px 28px 30px;display:flex;flex-direction:column;gap:20px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{display:grid;place-items:center;width:51px;height:51px;border-radius:18px;background:var(--yellow);color:#1d2941;font-size:28px;box-shadow:0 8px 25px #0003}
+.brand h1{font-size:21px;letter-spacing:.01em;margin:0}
+.brand p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.top-actions{display:flex;align-items:center;gap:8px}
+.ghost{border:1px solid var(--line);background:#ffffff09;color:var(--ink);border-radius:13px;padding:11px 15px;font-weight:800;transition:background .2s}
+.ghost:hover,.chip:hover{background:#ffffff20}
+.status{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#ffffff0b;color:#dbe8fa;padding:10px 15px;border-radius:999px;font-weight:800;font-size:13px;transition:.2s}
+.chip.active{background:var(--yellow);color:#172541;border-color:var(--yellow)}
+.progress{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:800;color:#cad6ea}
+.progressbar{height:9px;width:135px;background:#ffffff18;border-radius:99px;overflow:hidden}
+.progressbar>div{height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--yellow));transition:width .3s}
+.stage{flex:1;min-height:490px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;border:1px solid rgba(255,255,255,.15);border-radius:32px;background:linear-gradient(145deg,#1b3458e8,#122340fa);box-shadow:0 25px 70px #0005;overflow:hidden;text-align:center;padding:55px 55px 45px}
+.stage::before,.stage::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.stage::before{width:320px;height:320px;border:1px solid #ffffff16;top:-210px;left:-100px;box-shadow:0 0 0 54px #ffffff04,0 0 0 112px #ffffff03}
+.stage::after{width:380px;height:380px;border:1px solid #ffffff13;right:-240px;bottom:-220px;box-shadow:0 0 0 60px #ffffff04}
+.stage-content{position:relative;z-index:1;max-width:880px;width:100%}
+.ball{display:grid;place-items:center;margin:0 auto 25px;width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff4ce,var(--yellow) 52%,#e6a64d 100%);box-shadow:0 18px 60px #ffc65933,inset -13px -16px 24px #8b591d35;transform:rotate(-10deg);font-size:52px;color:#16233d}
+.eyebrow{font-weight:900;letter-spacing:.17em;color:var(--mint);font-size:13px}
+.stage h2{font-size:clamp(30px,4.1vw,60px);line-height:1.4;letter-spacing:-.035em;word-break:keep-all;margin:20px auto 17px;font-weight:900;max-width:900px}
+.stage .sub{color:#c6d3e7;font-size:16px;line-height:1.7;margin:0}
+.stage-countdown{font-size:clamp(110px,16vw,210px);font-weight:900;color:var(--yellow);line-height:1;animation:pop .5s ease}
+.fadein{animation:rise .45s cubic-bezier(.2,.75,.3,1) both}
+@keyframes pop{from{transform:scale(.65);opacity:.35}to{transform:scale(1);opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tag{display:inline-block;background:#ffffff19;border:1px solid #ffffff25;color:#e4edf9;border-radius:99px;padding:8px 14px;margin-top:14px;font-size:13px;font-weight:800}
+.controls{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+.primary{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:17px 36px;min-width:235px;border:0;border-radius:16px;background:var(--yellow);color:#182743;font-size:17px;font-weight:900;box-shadow:0 10px 25px #0003;transition:transform .2s,filter .2s}
+.primary:hover{transform:translateY(-2px);filter:brightness(1.055)}
+.secondary{border:1px solid var(--line);background:#ffffff13;border-radius:16px;color:var(--ink);padding:16px 22px;font-weight:800}
+.secondary:hover{background:#ffffff22}
+.footer{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#a6b7d2;font-size:12px}
+.footer kbd{border:1px solid #ffffff33;border-radius:5px;padding:3px 6px;color:#e2ebfc}
+.overlay{position:fixed;inset:0;z-index:30;background:#061020b9;backdrop-filter:blur(9px);display:none;justify-content:flex-end}
+.overlay.open{display:flex}
+.drawer{width:min(560px,100%);height:100%;background:#142541;box-shadow:-18px 0 55px #0006;display:flex;flex-direction:column}
+.drawer-head{padding:24px 25px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.drawer h2{font-size:23px;margin:0}
+.drawer-intro{font-size:13px;color:var(--muted);padding:12px 25px 0;line-height:1.7}
+.form-add{padding:15px 25px 18px;display:flex;gap:9px;border-bottom:1px solid var(--line)}
+.form-add textarea,.form-add select,.question-row textarea,.question-row select{border:1px solid #ffffff29;border-radius:11px;padding:10px 12px;background:#0e1d36;color:white;outline:none;min-width:0}
+.form-add textarea:focus,.question-row textarea:focus{border-color:var(--mint)}
+.form-add textarea{flex:1;min-height:70px;resize:vertical}
+.form-add-side{display:flex;flex-direction:column;gap:7px}
+.form-add select{max-width:132px}
+.mini-primary{border:0;border-radius:10px;padding:10px;background:var(--mint);color:#0e2831;font-weight:900}
+.question-list{padding:8px 25px;overflow-y:auto;flex:1}
+.question-row{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:start}
+.question-row>span{font-size:13px;color:#a9bbd4;padding-top:11px;width:23px;flex-shrink:0}
+.question-row textarea{resize:vertical;flex:1;min-height:62px;font-size:14px;line-height:1.5}
+.question-row-side{display:flex;flex-direction:column;gap:7px}
+.question-row select{font-size:12px;max-width:125px;padding:8px 5px}
+.remove{border:1px solid #ff9aab44;border-radius:9px;padding:7px;background:#ff8a9e16;color:#ffb9c5;font-size:12px}
+.drawer-foot{border-top:1px solid var(--line);padding:15px 25px 20px;display:flex;gap:8px;justify-content:space-between}
+.warn{color:#ffc0bd}
+.toast{position:fixed;z-index:60;bottom:22px;left:50%;transform:translateX(-50%);background:#fff;color:#142541;border-radius:12px;padding:12px 18px;box-shadow:0 10px 35px #0006;font-size:14px;font-weight:800;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1}
+.hidden{display:none!important}
+body.presentation .shell{max-width:none;padding:24px 3vw}
+body.presentation .stage h2{font-size:clamp(43px,5.7vw,94px)}
+body.presentation .stage{min-height:60vh}
+body.presentation .stage .sub{font-size:clamp(18px,2vw,27px)}
+@media(max-width:650px){.shell{padding:16px;gap:15px}
+.brand h1{font-size:18px}
+.brand p{font-size:10px}
+.logo{height:43px;width:43px;font-size:22px}
+.top-actions .ghost{padding:9px 11px;font-size:12px}
+.status{gap:10px}
+.chips{gap:6px}
+.chip{padding:8px 10px;font-size:11px}
+.progressbar{width:80px}
+.progress{font-size:11px}
+.stage{padding:36px 20px;min-height:450px;border-radius:23px}
+.ball{width:86px;height:86px;font-size:42px}
+.stage h2{font-size:clamp(26px,7vw,39px)}
+.stage .sub{font-size:13px}
+.footer{font-size:10px}
+.footer .keys{display:none}
+.primary{min-width:0;width:100%}
+.controls{flex-wrap:nowrap}
+.secondary{padding:13px 16px}
+.form-add{padding-left:14px;padding-right:14px}
+.question-list{padding:8px 14px}
+.question-row textarea{font-size:13px}
+.question-row select{max-width:103px}
+.drawer-foot{padding:12px 14px}
+.drawer-foot button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
