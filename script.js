@@ -21,6 +21,7 @@ const BASE=[
 ['taste','최근에 나를 가장 많이 웃게 만든 것은?'],
 ['taste','내가 절대 포기할 수 없는 사소한 일상 루틴은?'],
 ['taste','친구들이 나에게 가장 자주 하는 말은?'],
+['taste','나의 여행 스타일은?'],
 ['deep','처음 만난 사람들이 나를 어떻게 생각하는 것 같아? 실제 모습과 다른 점은?'],
 ['deep','내가 생각하는 나의 가장 큰 매력 포인트는?'],
 ['deep','친해지고 싶은 사람에게 나는 어떻게 다가가는 편이야?'],
@@ -30,7 +31,14 @@ const BASE=[
 ['deep','요즘 새롭게 도전해 보고 싶은 일이 있다면?'],
 ['deep','누군가 나에게 해줬던 말 중 기억에 남는 칭찬은?'],
 ['deep','나를 기분 좋게 만드는 아주 사소한 행동은?'],
-['deep','올해가 끝나기 전에 꼭 해보고 싶은 한 가지는?']
+['deep','올해가 끝나기 전에 꼭 해보고 싶은 한 가지는?'],
+['deep','나는 친해지면 어떤 모습으로 변하는 편이야?'],
+['deep','내가 스스로 생각해도 좀 웃긴 성격적 특징은?'],
+['deep','나는 어떤 사람에게 자연스럽게 호감을 느끼는 편이야?'],
+['deep','내가 가장 ’나다워진다’고 느끼는 순간은?'],
+['deep','어릴 때부터 지금까지 변하지 않은 나의 특징은?'],
+
+
 ].map((x,i)=>({id:'base-'+(i+1),category:x[0],text:x[1]}));
 const STORAGE='question-ball-v1';const $=id=>document.getElementById(id);const cats={all:'🎲 전체 랜덤',fun:'🤣 웃긴 질문',taste:'🍕 취향·일상',deep:'💗 서로 알아가기'};
 function load(){try{const s=JSON.parse(localStorage.getItem(STORAGE));if(s&&Array.isArray(s.questions)&&s.questions.length&&Array.isArray(s.history)&&['all','fun','taste','deep'].includes(s.category)){const questions=s.questions.filter(q=>q&&typeof q.id==='string'&&typeof q.text==='string'&&cats[q.category]).map(q=>({...q,text:q.text.slice(0,300)}));if(questions.length)return {questions,history:s.history.filter(h=>h&&typeof h.id==='string'&&cats[h.category]).slice(-200),category:s.category};}}catch(e){}return {questions:BASE.map(q=>({...q})),history:[],category:'all'};}
